@@ -18,7 +18,7 @@ func (s *Service) CheckTokenHealth(resource string) (TokenHealth, error) {
 	result := TokenHealth{Resource: resource, Entries: len(entries), StrictlyIncreasing: true}
 	var previous Token
 	for _, entry := range entries {
-		if entry.Token <= previous {
+		if entry.Token < previous {
 			result.StrictlyIncreasing = false
 		}
 		if entry.Token > result.LastToken {
